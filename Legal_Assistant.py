@@ -3,7 +3,7 @@ import google.generativeai as genai
 
 GEMINI_API_KEY = "AIzaSyCv86uC98jkzdzO6eCR4Tjav1AcGxIT2gQ"  
 
-st.title("AI Legal Assistant (Pakistan Law)")
+st.title("Pakistan’s Legal Assistant")
 
 tab =st.sidebar.selectbox("Choose Feature", [
     "Explain Legal Term",

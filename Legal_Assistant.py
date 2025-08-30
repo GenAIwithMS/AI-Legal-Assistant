@@ -1,7 +1,9 @@
 import streamlit as st
 import google.generativeai as genai
+from langchain_groq import ChatGroq
 
-GEMINI_API_KEY = "AIzaSyCv86uC98jkzdzO6eCR4Tjav1AcGxIT2gQ"  
+
+GROQ_API_KEY = "AIzaSyCv86uC98jkzdzO6eCR4Tjav1AcGxIT2gQ"  
 
 st.title("Pakistan’s Legal Assistant")
 
@@ -13,8 +15,8 @@ tab =st.sidebar.selectbox("Choose Feature", [
     "Translate Legal Document"
 ])
 
-genai.configure(api_key=GEMINI_API_KEY)
-model =genai.GenerativeModel("gemini-2.0-flash")
+
+model = ChatGroq(model="gemma2-9b-it",api_key=GROQ_API_KEY)
 
 if tab =="Explain Legal Term":
     term =st.text_input("Enter a legal term (Urdu or English)")
@@ -78,3 +80,4 @@ elif tab =="Translate Legal Document":
         with st.spinner("Translating and explaining..."):
             response =model.generate_content(prompt)
             st.write(response.text.strip())
+
